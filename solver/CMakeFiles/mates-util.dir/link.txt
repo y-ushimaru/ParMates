@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmates-util.a  CMakeFiles/mates-util.dir/AmuLineSegment.cpp.o CMakeFiles/mates-util.dir/AmuConverter.cpp.o CMakeFiles/mates-util.dir/AmuMatrix2D.cpp.o CMakeFiles/mates-util.dir/AmuMatrix3D.cpp.o CMakeFiles/mates-util.dir/AmuVector.cpp.o CMakeFiles/mates-util.dir/AmuInterval.cpp.o CMakeFiles/mates-util.dir/AmuPoint.cpp.o CMakeFiles/mates-util.dir/AmuStringOperator.cpp.o
+/usr/bin/ranlib libmates-util.a

@@ -1,0 +1,340 @@
+#####################################################
+# Copyright (C) 2014 ADVENTURE Project
+# All Rights Reserved
+#####################################################
+#----------------------------------------------------------------------
+#
+# Adventure-Mates
+#
+#----------------------------------------------------------------------
+#
+# Using cmake is recommended if possible. This is an alternative Makefile.
+#
+# This file is for GNU make only.
+# You need to remove commands specific to GNU make, such as "ifeq" and "endif", 
+# if you want to use any other kind of Unix-standard make.
+
+#----------------------------------------------------------------------
+# platform selection
+#
+# The following platforms are currently supported.
+#   * Linux
+#       Libraries : Gtk+, OpenGL and GLX
+#         OpenGL is either Mesa or XFree86 (Ver.4 or later)
+#         Gtk+ is Ver. 2.*
+#   * Linux (using old Gtk+)
+#       Libraries : Gtk+, OpenGL and gtkglarea
+#         OpenGL is either Mesa or XFree86 (Ver.4 or later)
+#         Gtk+ is Ver. 1.2.*
+#         gtkglarea is Ver. 1.2.*
+#   * Unix
+#       Libraries : Motif and OpenGL
+#   * Darwin_fink
+#       Libraries : Gtk+, OpenGL and GLX
+#   * Microsoft Windows and Cygwin
+#
+# You may also need to install additional packages, such as Mesa, 
+# gtkglarea or Cygwin.
+# For any other platforms, you may also need to change this file.
+#
+# Supported platforms for AutoGL
+#   Choose any one from these platforms below.
+#
+#   Linux with Gtk+, OpenGL and GLX
+PLATFORM = Linux
+#   Linux with Gtk+, OpenGL and gtkglarea 
+#PLATFORM = Linux_old
+#   Unix with Motif and OpenGL
+#PLATFORM = Unix
+#   Mac OSX with GTK+, OpenGL and GLX
+#PLATFORM = Darwin_fink
+#   Microsoft Windows and Cygwin
+#PLATFORM = Cygwin
+#   No visualization
+#PLATFROM = Novis
+
+#----------------------------------------------------------------------
+# install directory
+prefix = ${HOME}/ADVENTURE
+BINDIR = ${prefix}/bin
+
+#---------------------------------------------------------------------------
+CXX = g++
+CC  = gcc
+AR  = ar
+LD  = ${CXX}
+INSTALL = install -c
+
+# debug selection
+#DEBUG = Use
+DBUG = None
+
+# openmp selection
+OPENMP = Use
+#OPENMP = None
+ifeq (${PLATFORM}, Cygwin)
+  OPENMP = None
+endif
+
+#---------------------------------------------------------------------------
+# directories of header files and libraries
+
+LIBRARY_ROOT_DIR    = ../lib
+AUTOGL_HEADER_DIR   = ${LIBRARY_ROOT_DIR}/autogl
+AUTOGL_LIBRARY_DIR  = ${LIBRARY_ROOT_DIR}/autogl
+MT19937_HEADER_DIR  = ${LIBRARY_ROOT_DIR}/mt19937
+MT19937_LIBRARY_DIR = ${LIBRARY_ROOT_DIR}/mt19937
+MATES_HEADER_DIR    = ../include
+MATES_LIBRARY_DIR    = ../lib
+
+ifeq (${PLATFORM}, Linux)
+  INCLUDES += -I${AUTOGL_HEADER_DIR} -I${MT19937_HEADER_DIR}
+  LIBSGL   += -L${AUTOGL_LIBRARY_DIR} -lautogl
+  LIBSGL   += `sh ${AUTOGL_LIBRARY_DIR}/advautogl-config`
+  LIBS     += -L${MT19937_LIBRARY_DIR} -lmt19937
+  LIBS     += -lz
+endif
+ifeq (${PLATFORM}, Linux_old)
+  INCLUDES += -I${AUTOGL_HEADER_DIR} -I${MT19937_HEADER_DIR}
+  LIBSGL   += -L${AUTOGL_LIBRARY_DIR} -lautogl
+  LIBSGL   += `sh ${AUTOGL_LIBRARY_DIR}/advautogl-config`
+  LIBS     += -L${MT19937_LIBRARY_DIR} -lmt19937
+  LIBS     += -lz
+endif
+ifeq (${PLATFORM}, Unix)
+  INCLUDES += -I${AUTOGL_HEADER_DIR} -I${MT19937_HEADER_DIR}
+  LIBSGL   += -L${AUTOGL_LIBRARY_DIR} -lautogl
+  LIBSGL   += `sh ${AUTOGL_LIBRARY_DIR}/advautogl-config`
+  LIBS     += -L${MT19937_LIBRARY_DIR} -lmt19937
+  LIBS     += -lz
+endif
+ifeq (${PLATFORM}, Darwin_fink)
+  INCLUDES += -I${AUTOGL_HEADER_DIR} -I${MT19937_HEADER_DIR}
+  INCLUDES += -I/usr/X11/include
+  LIBSGL   += -L${AUTOGL_LIBRARY_DIR} -lautogl
+  LIBSGL   += `sh ${AUTOGL_LIBRARY_DIR}/advautogl-config`
+  LIBS     += -L${MT19937_LIBRARY_DIR} -lmt19937
+  LIBS     += -lz
+endif
+ifeq (${PLATFORM}, Cygwin)
+  INCLUDES += -I/usr/include/opengl
+  INCLUDES += -I${AUTOGL_HEADER_DIR} -I${MT19937_HEADER_DIR}
+  LIBSGL   += -L${AUTOGL_LIBRARY_DIR} -lautogl
+  LIBSGL   += `sh ${AUTOGL_LIBRARY_DIR}/advautogl-config`
+  LIBS     += -L${MT19937_LIBRARY_DIR} -lmt19937
+  LIBS     += -lz
+endif
+ifeq (${PLATFORM}, Novis)
+  INCLUDES += -I${MT19937_HEADER_DIR}
+  LIBS     += -L${MT19937_LIBRARY_DIR} -lmt19937
+  LIBS     += -lz
+endif
+
+#----------------------------------------------------------------------
+# compile options
+
+CFLAGS   = ${INCLUDES}
+CXXFLAGS = ${INCLUDES}
+
+# for debug and optimization
+ifeq (${DEBUG}, Use)
+  CFLAGS   += -g -Wall -Wno-sign-compare
+  CXXFLAGS += -g -Wall -Wno-sign-compare
+else
+  CFLAGS   += -DNDEBUG -O3 -Wno-sign-compare
+  CXXFLAGS += -DNDEBUG -O3 -Wno-sign-compare
+endif
+
+# for opengl32
+ifeq (${PLATFORM}, Cygwin)
+  CXXFLAGS += -DUSE_OPENGL32
+  CFLAGS   += -DUSE_OPENGL32
+endif
+
+LDFLAGS =
+
+# for openmp
+ifeq (${OPENMP}, Use)
+  CFLAGS   += -fopenmp
+  CXXFLAGS += -fopenmp
+  LDFLAGS  += -fopenmp
+endif
+
+ARFLAGS = crsv
+
+#----------------------------------------------------------------------
+# macro definition
+
+CXXFLAGS += -DUNIQUE_NETWORK
+CXXFLAGS += -DINCLUDE_VEHICLES
+#CXXFLAGS += -DGENERATE_VEHICLE_0
+
+#----------------------------------------------------------------------
+.SUFFIXES: .cpp .c
+
+.cpp.o:
+	${CXX} -c $< ${CXXFLAGS}
+
+.c.o:
+	${CC} -c $< ${CFLAGS}
+
+#----------------------------------------------------------------------
+MATES_UTIL_HDRS = AmuLineSegment.h \
+	AmuConverter.h \
+	AmuMatrix.h \
+	AmuMatrix2D.h \
+	AmuMatrix3D.h \
+	AmuVector.h \
+	AmuInterval.h \
+	AmuPoint.h \
+	AmuStringOperator.h
+
+MATES_UTIL_OBJS = AmuLineSegment.o \
+	AmuConverter.o \
+	AmuMatrix2D.o \
+	AmuMatrix3D.o \
+	AmuVector.o \
+	AmuInterval.o \
+	AmuPoint.o \
+	AmuStringOperator.o
+
+MATES_COMMON_OBJS = AppMates.o \
+	Blinker.o \
+	Border.o \
+	Clocker.o \
+	Connector.o \
+	Detector.o \
+	DetectorIO.o \
+	DetectorUnit.o \
+	OD.o \
+	GeneratingTable.o \
+        GenerateVehicleController.o \
+	GenerateVehicleIO.o \
+	GVInitializer.o \
+	GVManager.o \
+	FileManager.o \
+	Intersection.o \
+	IntersectionBuilder.o \
+	Lane.o \
+	LaneBundle.o \
+	LaneInSection.o \
+	LocalLaneRoute.o \
+	LocalLaneRouter.o \
+	NodeAStar.o \
+	ObjManager.o \
+	ODNode.o \
+	Random.o \
+	RelativeDirectionTable.o \
+	RoadEntity.o \
+	RoadMap.o \
+	RoadMapBuilder.o \
+	Route.o \
+	Router.o \
+	Section.o \
+	SectionBuilder.o \
+	Signal.o \
+	SignalAspect.o \
+	SignalColor.o \
+	SignalControlData.o \
+	SignalControlDataSet.o \
+	SignalIO.o \
+	Simulator.o \
+	SubIntersection.o \
+	SubSection.o \
+	TimeManager.o \
+	Tree.o \
+	Vehicle.o \
+	VehicleAccelDeterminer.o \
+	VehicleFamily.o \
+	VehicleFamilyIO.o \
+	VehicleFamilyManager.o \
+	VehicleIO.o \
+	VehicleLaneShifter.o \
+	VehicleRecognizer.o \
+	VehicleRunner.o \
+	VirtualLeader.o
+
+MATES_CALC_OBJS = AppCalc.o
+
+MATES_SIM_OBJS = AppSim.o \
+	Drawer.o \
+	GLColor.o \
+	Visualizer.o \
+	autogl_mates.o
+
+MATES_CALC_MAIN_OBJ = mainCalc.o
+MATES_SIM_MAIN_OBJ = mainSim.o
+
+#----------------------------------------------------------------------
+LIBAUTOGL = ${AUTOGL_LIBRARY_DIR}/libautogl.a
+LIBMT19937 = ${MT19937_LIBRARY_DIR}/libmt19937.a
+
+LIBMATESUTIL = libmates-util.a
+LIBMATES = libmates.a
+LIBMATESGL = libmatesGL.a
+
+PROGRAM_CALC  = advmates-calc
+PROGRAM_SIM   = advmates-sim
+INSTALL_FILES = ${PROGRAM_CALC}
+ifneq (${PLATFORM}, Novis)
+  INSTALL_FILES += ${PROGRAM_SIM}
+endif
+
+TARGETS = ${LIBMT19937} ${LIMATESUTIL} ${LIBMATES} ${PROGRAM_CALC}
+ifneq (${PLATFORM}, Novis)
+  TARGETS += ${LIBAUTOGL} ${LIBMATESGL} ${PROGRAM_SIM}
+endif
+
+all : ${TARGETS}
+
+${LIBAUTOGL} : ${AUTOGL_LIBRARY_DIR}/*.[ch]
+	cd ${AUTOGL_LIBRARY_DIR}; make -f Makefile.alt
+
+${LIBMT19937} : ${MT19937_LIBRARY_DIR}/*.[ch]
+	cd ${MT19937_LIBRARY_DIR}; make -f Makefile.alt
+
+${LIBMATESUTIL} : ${MATES_UTIL_HDRS} ${MATES_UTIL_OBJS}
+	${AR} ${ARFLAGS} $@ ${MATES_UTIL_OBJS}
+	cp -f ${MATES_UTIL_HDRS} ${MATES_HEADER_DIR}
+	ln -fs ${LIBMATESUTIL} ${MATES_LIBRARY_DIR}
+
+${LIBMATES} : ${MATES_COMMON_OBJS}
+	${AR} ${ARFLAGS} $@ $^
+
+${LIBMATESGL} : ${MATES_SIM_OBJS}
+	${AR} ${ARFLAGS} $@ $^
+
+${PROGRAM_CALC} : ${MATES_CALC_MAIN_OBJ} ${MATES_CALC_OBJS} \
+	${LIBMATES} ${LIBMATESUTIL}
+	@echo "Linking ${PROGRAM_CALC} ..."
+	${LD} ${LDFLAGS} -o $@ $^ ${LIBS}
+	@echo "done"
+
+${PROGRAM_SIM} : ${MATES_SIM_MAIN_OBJ} \
+	${LIBMATES} ${LIBMATESGL} ${LIBMATESUTIL}
+	@echo "Linking ${PROGRAM_SIM} ..."
+	${LD} ${LDFLAGS} -o $@ $^ ${LIBS} ${LIBSGL}
+	@echo "done"
+
+#----------------------------------------------------------------------
+# clean target
+clean :
+	rm -f ${MATES_LIBRARY_DIR}/${LIBMATESUTIL}
+	rm -f *.o *.a
+
+clobber: clean
+	cd ${AUTOGL_LIBRARY_DIR}; make -f Makefile.alt clean
+	cd ${MT19937_LIBRARY_DIR}; make -f Makefile.alt clean
+
+#----------------------------------------------------------------------
+# install target
+install : ${INSTALL_FILES}
+	${INSTALL} -d ${BINDIR}
+	${INSTALL} ${INSTALL_FILES} ${BINDIR}
+
+#----------------------------------------------------------------------
+# for doxygen
+MATES_DOXYGEN_DIR = ../doc/doxygen/
+
+dox :
+	cd ${MATES_DOXYGEN_DIR}; doxygen advmates-dox-min
