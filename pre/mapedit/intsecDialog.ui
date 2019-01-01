@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ===============================================
+  Copyright (C) 2014 ADVENTURE Project
+  All Rights Reserved
+================================================ -->
+<ui version="4.0">
+    <class>IntsecDialog</class>
+    <widget class="QDialog" name="IntsecDialog">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>382</width>
+                <height>252</height>
+            </rect>
+        </property>
+        <property name="minimumSize">
+            <size>
+                <width>382</width>
+                <height>252</height>
+            </size>
+        </property>
+        <property name="maximumSize">
+            <size>
+                <width>382</width>
+                <height>252</height>
+            </size>
+        </property>
+        <property name="windowTitle">
+            <string>Edit intersection</string>
+        </property>
+        <widget class="QLabel" name="label">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>60</y>
+                    <width>120</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>X(m):</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBoxY">
+            <property name="geometry">
+                <rect>
+                    <x>150</x>
+                    <y>90</y>
+                    <width>91</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="minimum">
+                <number>-1000000000</number>
+            </property>
+            <property name="maximum">
+                <number>1000000000</number>
+            </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBoxZ">
+            <property name="geometry">
+                <rect>
+                    <x>150</x>
+                    <y>120</y>
+                    <width>91</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="minimum">
+                <number>-1000000000</number>
+            </property>
+            <property name="maximum">
+                <number>1000000000</number>
+            </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBoxX">
+            <property name="geometry">
+                <rect>
+                    <x>150</x>
+                    <y>60</y>
+                    <width>91</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="minimum">
+                <number>-1000000000</number>
+            </property>
+            <property name="maximum">
+                <number>1000000000</number>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_4">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>20</y>
+                    <width>120</width>
+                    <height>18</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Intersection ID:</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="buttonDelete">
+            <property name="geometry">
+                <rect>
+                    <x>270</x>
+                    <y>20</y>
+                    <width>81</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                </font>
+            </property>
+            <property name="text">
+                <string>Delete</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_2">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>90</y>
+                    <width>120</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Y(m):</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_3">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>120</y>
+                    <width>120</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Z(m):</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="buttonCancel">
+            <property name="geometry">
+                <rect>
+                    <x>270</x>
+                    <y>160</y>
+                    <width>81</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Cancel</string>
+            </property>
+            <property name="default">
+                <bool>false</bool>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="buttonOk">
+            <property name="geometry">
+                <rect>
+                    <x>270</x>
+                    <y>200</y>
+                    <width>81</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>ＯＫ</string>
+            </property>
+            <property name="default">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QComboBox" name="comboFirstIntsec">
+            <property name="geometry">
+                <rect>
+                    <x>150</x>
+                    <y>190</y>
+                    <width>91</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_6">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>180</y>
+                    <width>120</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Intersection ID</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_7">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>200</y>
+                    <width>120</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>(of Border ID:0)</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="buttonCenter">
+            <property name="geometry">
+                <rect>
+                    <x>150</x>
+                    <y>150</y>
+                    <width>91</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                </font>
+            </property>
+            <property name="text">
+                <string>Centering</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="buttonVerify">
+            <property name="geometry">
+                <rect>
+                    <x>270</x>
+                    <y>60</y>
+                    <width>81</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                </font>
+            </property>
+            <property name="text">
+                <string>Confirm</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBoxId">
+            <property name="geometry">
+                <rect>
+                    <x>150</x>
+                    <y>20</y>
+                    <width>91</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="minimum">
+                <number>0</number>
+            </property>
+            <property name="maximum">
+                <number>999999</number>
+            </property>
+        </widget>
+    </widget>
+    <tabstops>
+        <tabstop>buttonCancel</tabstop>
+        <tabstop>spinBoxId</tabstop>
+        <tabstop>spinBoxX</tabstop>
+        <tabstop>spinBoxY</tabstop>
+        <tabstop>spinBoxZ</tabstop>
+        <tabstop>buttonCenter</tabstop>
+        <tabstop>comboFirstIntsec</tabstop>
+        <tabstop>buttonDelete</tabstop>
+        <tabstop>buttonVerify</tabstop>
+        <tabstop>buttonOk</tabstop>
+    </tabstops>
+    <resources/>
+    <connections/>
+</ui>

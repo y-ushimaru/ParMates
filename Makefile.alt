@@ -1,0 +1,38 @@
+#####################################################
+# Copyright (C) 2014 ADVENTURE Project
+# All Rights Reserved
+#####################################################
+#----------------------------------------------------------------------
+# install directory
+prefix = ${HOME}/ADVENTURE
+
+#----------------------------------------------------------------------
+BUILD_TARGETS = mt19937 mates
+ifneq (${PLATFORM}, Novis)
+  BUILD_TARGETS += autogl
+endif
+
+#----------------------------------------------------------------------
+all   : ${BUILD_TARGETS}
+
+autogl :
+	if [ -d lib/autogl/ ]; then cd lib/autogl/ && make -f Makefile.alt; fi
+
+mt19937 :
+	if [ -d lib/mt19937/ ];	then cd lib/mt19937/ && make -f Makefile.alt; fi
+
+mates :
+	if [ -d solver/ ];      then cd solver/      && make -f Makefile.alt; fi
+
+#----------------------------------------------------------------------
+# clean target
+clean :
+	if [ -d lib/autogl/ ];  then cd lib/autogl/  && make -f Makefile.alt clean; fi
+	if [ -d lib/mt19937/ ];	then cd lib/mt19937/ && make -f Makefile.alt clean; fi
+	if [ -d solver/ ];      then cd solver/      && make -f Makefile.alt clean; fi
+
+#----------------------------------------------------------------------
+# install target
+install :
+	if [ -d solver/ ];      then cd solver/      && make prefix=${prefix} -f Makefile.alt install; fi
+	if [ -d doc/ ];         then cd doc/         && make prefix=${prefix} -f Makefile.alt install; fi

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libxsadd.a  CMakeFiles/xsadd.dir/xsadd.c.o
+/usr/bin/ranlib libxsadd.a

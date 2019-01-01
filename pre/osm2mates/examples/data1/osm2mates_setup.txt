@@ -1,0 +1,52 @@
+# ascii character only
+
+# version
+OSM2MATES_SETUP            "1.1"
+
+# osm, default = false
+OSM                        true
+
+# modify, default = false
+MODIFY                     "true"
+
+# file, directory, default = ""
+INPUT_OSM_FILE             "osm/map.osm"
+OUTPUT_DIR                 "output"
+
+# no confirm , default = false
+#NO_CONFIRM                false
+
+# report intervel (ms), default = 1000
+#REPORT_INTV               1000
+
+# latitude, longitude min/max, default = -10000, 10000
+#LAT_MIN                   -10000
+#LAT_MAX                   35.652005
+#LON_MIN                   -10000
+#LON_MAX                   139.718689
+
+# japan geodetic for min/max, need latitude and longitude
+#   default = false
+#LATLON_JAPAN              true
+
+# osm lane, 0 = no road, default = 1
+#OSM_LANE_MOTORWAY         1
+#OSM_LANE_MOTORWAY_LINK    1
+#OSM_LANE_TRUNK            1
+#OSM_LANE_TRUNK_LINK       1
+#OSM_LANE_PRIMARY          1
+#OSM_LANE_PRIMARY_LINK     1
+#OSM_LANE_SECONDARY        1
+#OSM_LANE_TERTIARY         1
+#OSM_LANE_UNCLASSIFIED     1
+#OSM_LANE_RESIDENTIAL      1
+
+# merge length, -1 = no merge, default = 30.0
+#MOD_MERGE_LEN             30.0
+
+# find count of next intersection for merge, default = 15
+#MOD_MERGE_FIND            15
+
+# force one lane, <val> or less lane -> 1 lane, -1 = no change
+#   default = -1
+#MOD_FORCE_ONE_LANE        -1

@@ -1,0 +1,15 @@
+#! /bin/sh -f
+########################################################################### 
+# Copyright (C) 2002-2014 Shinobu Yoshimura, University of Tokyo,         #
+# the Japan Society for the Promotion of Science (JSPS)                   #
+# All Rights Reserved                                                     #
+########################################################################### 
+
+# Server
+#   software emulation on server 
+#     AutoGL.edu (client-server / web application edition)
+#     No libraries are required.
+
+libs="-lm"
+
+echo "${libs} "

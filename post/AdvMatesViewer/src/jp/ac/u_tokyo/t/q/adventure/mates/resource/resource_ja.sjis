@@ -1,0 +1,318 @@
+Product.name=AdvMatesViewer
+Product.version=Ver.1.0
+Product.copyright=Copyright (C)2014
+Company.name=株式会社インサイト
+Company.url=http://www.meshman.jp/
+
+##################################################
+# メニュー項目
+##################################################
+
+menu.file                                      =ファイル
+menu.file.load                                 =解析結果を読み込む
+menu.file.convert                              =解析結果をコンバートする
+menu.file.open                                 =ファイルを開く
+menu.file.openMultipleFiles                    =複数ファイルを開く
+menu.file.property                             =プロパティー
+menu.file.deleteCache                          =キャッシュファイルの消去
+menu.file.reboot                               =再起動
+menu.file.exit                                 =終了
+
+menu.view                                      =表示
+menu.view.colorBar                             =カラーバー
+menu.view.light                                =シェーディング
+menu.view.configureView                        =表示の設定
+menu.view.configureTrafficTime                 =時間ステップを設定する
+
+menu.tool                                      =ツール
+menu.tool.saveScreenShot                       =スクリーンショットを保存
+
+menu.help                                      =ヘルプ
+menu.help.about                                =製品について
+
+
+##################################################
+# ダイアログ関連
+##################################################
+# *** ConfigureViewPointDialog
+dialog.configureView.title                                         =表示の設定
+dialog.configureView.viewEnable.title                              =表示のON/OFF
+dialog.configureView.viewEnable.road                               =道路
+dialog.configureView.viewEnable.roadLine                           =道路のライン
+dialog.configureView.viewEnable.roadSide                           =路側
+dialog.configureView.viewEnable.sideWalk                           =歩道
+dialog.configureView.viewEnable.intersectionID                     =交差点ID
+dialog.configureView.viewEnable.vehicle                            =車両
+dialog.configureView.viewEnable.vehicleID                          =車両ID
+dialog.configureView.viewEnable.signal                             =信号
+dialog.configureView.viewEnable.ground                             =地面
+dialog.configureView.viewEnable.axis                               =座標軸
+dialog.configureView.viewEnable.simpleView                         =簡易表示
+dialog.configureView.viewPoint.title                               =視点の設定
+dialog.configureView.viewPoint.birdEye                             =俯瞰視点
+dialog.configureView.viewPoint.walkThrough                         =ウォークスルー視点
+dialog.configureView.viewPoint.onVehicle                           =車両からの視点
+dialog.configureView.viewPoint.vehicleID                           =車両ID
+dialog.configureView.viewPoint.vehicleIDList.title                 =走行中の車両のID
+dialog.configureView.viewPointConfiguration.title                  =視点の保存・復元
+dialog.configureView.viewPointConfiguration.get                    =操作中の3D画面の視点の設定を取得する
+dialog.configureView.viewPointConfiguration.set                    =操作中の3D画面に視点の設定を適用する
+dialog.configureView.viewPointConfiguration.load                   =視点の設定をファイルから取得する
+dialog.configureView.viewPointConfiguration.save                   =操作中の3D画面の視点の設定をファイルに保存する
+dialog.configureView.numActive3DPanels                             =3D画面の個数
+dialog.configureView.indexOfActive3DPanel                          =操作中の画面番号
+dialog.configureView.error.parse.title                             =エラー
+dialog.configureView.error.parse.message                           =車両番号には整数を入力してください
+dialog.configureView.error.setMode.title                           =エラー
+dialog.configureView.error.setMode.message                         =指定した車両に視点を設定できませんでした
+
+# *** ConfigureTrafficTimeDialog
+dialog.configureTrafficTime.title                                       =時間ステップの設定
+dialog.configureTrafficTime.setRange                                    =時間ステップの範囲の設定
+dialog.configureTrafficTime.stepMin                                     =時間ステップの最小値
+dialog.configureTrafficTime.stepMax                                     =時間ステップの最大値
+dialog.configureTrafficTime.rangeMin                                    =再生範囲の最小値
+dialog.configureTrafficTime.rangeMax                                    =再生範囲の最大値
+dialog.configureTrafficTime.previous                                    =戻る
+dialog.configureTrafficTime.next                                        =進む
+dialog.configureTrafficTime.current                                     =現在の時間ステップ(直接入力可)
+dialog.configureTrafficTime.playConfiguration                           =連続再生についての設定
+dialog.configureTrafficTime.trafficTimeIncrement                        =時間ステップ増分
+dialog.configureTrafficTime.playInterval                                =再生間隔
+dialog.configureTrafficTime.button.changeTrafficTimeIncrement           =時間ステップの増分を変更
+dialog.configureTrafficTime.button.changePlayInterval                   =再生速度を変更
+dialog.configureTrafficTime.error.parse.trafficTime.message             =時間ステップが正しくありません
+dialog.configureTrafficTime.error.parse.trafficTime.title               =エラー
+dialog.configureTrafficTime.error.parse.trafficTimeIncrement.message    =時間ステップ増分が正しくありません
+dialog.configureTrafficTime.error.parse.trafficTimeIncrement.title      =エラー
+dialog.configureTrafficTime.error.parse.trafficTimeRange.message        =時間ステップの範囲が正しくありません
+dialog.configureTrafficTime.error.parse.trafficTimeRange.title          =エラー
+dialog.configureTrafficTime.error.parse.playInterval.message            =再生間隔が正しくありません
+dialog.configureTrafficTime.error.parse.playInterval.title              =エラー
+dialog.configureTrafficTime.error.parse.play.title                      =エラー
+dialog.configureTrafficTime.error.setTimeStep.message                   =時間ステップには範囲内の番号を入力してください
+dialog.configureTrafficTime.error.setTimeStep.title                     =エラー
+dialog.configureTrafficTime.warning.closeWhenPlaying.message            =再生中はダイアログを閉じることはできません
+dialog.configureTrafficTime.warning.closeWhenPlaying.title              =警告
+dialog.configureTrafficTime.saveImage                                   =各ステップの表示内容を画像に保存する
+dialog.configureTrafficTime.saveImage.message                           =画像の保存先フォルダ
+dialog.configureTrafficTime.saveMovie                                   =各ステップの表示内容を動画に保存する
+dialog.configureTrafficTime.saveMovie.message                           =動画の保存先
+
+# *** FontChooserDialog
+dialog.fontChooser.title                                  =フォント選択:
+dialog.fontChooser.labelSample                            =<HTML>0123456789<BR>abcdefg hijklmnop<BR>ABCDEFG HIJKLMNOP<BR>qrstu vwxyz<BR>QRSTU VWXYZ
+dialog.fontChooser.target.variableName                    =変数名用フォント
+dialog.fontChooser.target.colorBar                        =カラーバー用フォント
+dialog.fontChooser.target.axisLabel                       =座標軸ラベル用フォント
+
+# *** ColorRangeDialog
+dialog.colorRange.title                                   =カラーレンジの設定
+dialog.colorRange.auto                                    =自動検出
+dialog.colorRange.manual                                  =手動で設定
+dialog.colorRange.fix                                     =カラーレンジを固定する
+dialog.colorRange.min                                     =カラーレンジの最小値
+dialog.colorRange.max                                     =カラーレンジの最大値
+dialog.colorRange.error.title                             =エラー
+dialog.colorRange.error.message                           =正しい値が入力されていません
+
+# *** ChangeColorDistributionDialog
+dialog.changeColorDistribution.title                      =カラーバーの色分布のカスタマイズ
+dialog.changeColorDistribution.button.open                =開く
+dialog.changeColorDistribution.button.save                =保存
+dialog.changeColorDistribution.button.saveas              =別名保存
+dialog.changeColorDistribution.button.clear               =クリア
+dialog.changeColorDistribution.button.defaultContinuous   =デフォルト値
+dialog.changeColorDistribution.button.randomContinuous    =ランダム色生成
+dialog.changeColorDistribution.button.defaultDiscrete     =デフォルト値
+dialog.changeColorDistribution.button.randomDiscrete      =ランダム色生成
+dialog.changeColorDistribution.button.chooseColor         =色選択
+dialog.changeColorDistribution.button.divideContinuous    =等分
+dialog.changeColorDistribution.button.divideDiscrete      =等分
+dialog.changeColorDistribution.label.divideContinuous     =個の分割点
+dialog.changeColorDistribution.label.divideDiscrete       =個の分割点
+dialog.changeColorDistribution.tab.explain                =説明
+dialog.changeColorDistribution.tab.continuous             =連続的に変化
+dialog.changeColorDistribution.tab.discrete               =離散的に変化
+dialog.changeColorDistribution.error.message              =入力した値を確認してください
+dialog.changeColorDistribution.error.title                =エラー
+dialog.changeColorDistribution.colorchooser.title         =色の選択
+dialog.changeColorDistribution.explain.message            =このダイアログではカラーバーの設定を変更することができます。\n  連続的な変化の場合は、色が変化する位置と、最小、最大値を含めた各位置での色を指定してください。それぞれの位置の間では自動で計算した色が用いられます。\n  離散的な変化の場合は、色が変化する位置と、それぞれの位置の間での色を指定してください。\n  カラーバー内での位置指定は、最小値を0、最大値を1、その中間は小数によって相対的に指定します。\n  色が変化する位置の個数はどちらの場合も1～10個で設定できます。10未満の個数を用いる場合は小さい側に詰めて設定してください。
+
+# *** ChangeColorBarPositionAndSizeDialog
+dialog.changeColorBarPositionAndSize.title                =カラーバーの位置とサイズのカスタマイズ
+dialog.changeColorBarPositionAndSize.togglebutton.top     =
+dialog.changeColorBarPositionAndSize.togglebutton.bottom  =
+dialog.changeColorBarPositionAndSize.togglebutton.left    =
+dialog.changeColorBarPositionAndSize.togglebutton.right   =
+dialog.changeColorBarPositionAndSize.message1             =カラーバーの位置とサイズを指定してください
+dialog.changeColorBarPositionAndSize.message2             =
+dialog.changeColorBarPositionAndSize.message.width        =バーの太さ
+dialog.changeColorBarPositionAndSize.message.height       =バーの長さ
+dialog.changeColorBarPositionAndSize.error.message        =入力した値を確認してください
+dialog.changeColorBarPositionAndSize.error.title          =エラー
+
+# *** OptionDialog
+dialog.option.title                                       =オプション
+dialog.option.error.title                                 =エラー
+dialog.option.error.message                               =入力した値を確認してください
+
+# *** AboutDialog
+dialog.about.title                                        =この製品について
+
+# 色選択のダイアログのタイトル
+dialog.colorChooser.color.backGround.title                =背景色の選択
+
+# 進捗ダイアログ
+dialog.singleBarMonitor.title                             =進捗状況
+
+# *** 各種確認メッセージ用のリソース
+dialoge.confirm.deleteCache.message                       =キャッシュファイルを削除しますか？
+dialoge.confirm.deleteCache.title                         =確認
+dialoge.confirm.fileOverwrite.message                     =ファイルが存在します。上書きしますか？
+dialoge.confirm.fileOverwrite.title                       =確認
+dialoge.confirm.generateMesh.message                      =粒子モデルにメッシュを生成しますか？
+dialoge.confirm.generateMesh.title                        =確認
+dialoge.confirm.regenerateMesh.message                    =粒子モデルにメッシュを生成しなおしますか？
+dialoge.confirm.regenerateMesh.title                      =確認
+
+# *** ツールチップ用のリソース
+tooltip.view3D                                            =<html>キー+左ボタンドラッグで特殊操作<br>C : 回転中心移動<br>M : 矩形選択+カラーバー調整<br>P : ピック<br>R : 矩形選択+拡大<br>S : 拡大縮小<br>T : 移動
+
+# *** ファイルをインポートするためのパネル
+dialog.component.importFilesPanel.add                     =追加
+dialog.component.importFilesPanel.remove                  =削除
+dialog.component.importFilesPanel.up                      =上へ
+dialog.component.importFilesPanel.down                    =下へ
+dialog.component.importFilesPanel.sort                    =整列
+dialog.component.importFilesPanel.FullPath                =フルパス表示
+dialog.component.importFilesPanel.FileNameOnly            =ファイル名表示
+
+# *** ファイルのプロパティーを表示するダイアログ
+dialog.properties.title                                   = ファイルのプロパティー
+dialog.properties.table.title.key                         = 項目名
+dialog.properties.table.title.value                       = 値
+dialog.properties.volume                                  = ボリューム
+
+
+##################################################
+# よく使われるコンポーネント
+##################################################
+button.ok     =OK
+button.cancel =キャンセル
+button.close  =閉じる
+button.apply  =適用
+button.select =選択
+button.save   =保存
+button.show   =表示
+button.file   =ファイル
+button.play   =再生
+button.pause  =停止
+
+##################################################
+# エラー関連等
+##################################################
+error.load.message         =読み込みに失敗しました
+error.load.title           =エラー
+error.convert.message      =変換に失敗しました
+error.convert.title        =エラー
+confirm.convert.message    =変換が完了しました
+confirm.convert.title      =確認
+
+##################################################
+# 拡張子
+##################################################
+extension.acceptable.name         =par,pch,stl,dau,dat,zip
+extension.acceptable.description  =読み込み可能なファイル
+extension.properties.name         =properties
+extension.properties.description  =プロパティーファイル
+extension.image.png.name          =png
+extension.image.png.description   =PNG画像ファイル
+extension.image.jpg.name          =jpg
+extension.image.jpg.description   =JPEG画像ファイル
+extension.input.name              =dat
+extension.input.description       =ソルバ入力ファイル
+extension.result.name             =dau
+extension.result.description      =解析結果ファイル
+extension.wmv.name                =wmv
+extension.wmv.description         =Windows Media Video
+extension.csv.name                =csv
+extension.csv.description         =CSVファイル
+
+##################################################
+# ユーザー設定の初期値
+##################################################
+userControl.default.DATPropertiesFileName  =inputFormatVer3.0.properties
+userControl.default.DAUPropertiesFileName  =outputFormat_DAUVer3.0.properties
+
+##################################################
+# 色分けしている量を表示するためのラベル
+##################################################
+# *** 色分けしている量を表示するためのラベル
+variable.null                            =無効
+variable.Stress\ X                       =X方向垂直応力
+variable.Stress\ Y                       =Y方向垂直応力
+variable.Stress\ Z                       =Z方向垂直応力
+variable.StressX                         =X方向垂直応力
+variable.StressY                         =Y方向垂直応力
+variable.StressZ                         =Z方向垂直応力
+variable.Velocity\ X                     =X方向速度
+variable.Velocity\ Y                     =Y方向速度
+variable.Velocity\ Z                     =Z方向速度
+variable.VelocityX                       =X方向速度
+variable.VelocityY                       =Y方向速度
+variable.VelocityZ                       =Z方向速度
+variable.Velocity                        =速さ
+variable.Displacement\ X                 =X方向変位
+variable.Displacement\ Y                 =Y方向変位
+variable.Displacement\ Z                 =Z方向変位
+variable.DisplacementX                   =X方向変位
+variable.DisplacementY                   =Y方向変位
+variable.DisplacementZ                   =Z方向変位
+variable.Displacement                    =変形量
+variable.PLOADX                          =X方向境界条件
+variable.PLOADY                          =Y方向境界条件
+variable.PLOADZ                          =Z方向境界条件
+variable.BCValueX                        =X方向境界条件
+variable.BCValueY                        =Y方向境界条件
+variable.BCValueZ                        =Z方向境界条件
+variable.NBOUN                           =境界条件タイプ
+variable.BCType                          =境界条件タイプ
+variable.Von\ Mises\ Stress              =Von Misesの相当応力
+variable.Equivalent\ Plastic\ Strain     =相当塑性ひずみ
+variable.Magnitude\ Of\ Reaction\ Force  =反力の大きさ
+variable.Pressure                        =圧力
+variable.Temperature                     =温度
+variable.Density                         =密度
+variable.Relative\ Density               =相対密度
+variable.Yield\ Region                   =塑性域
+variable.Yield\ Region.0                 =通常粒子
+variable.Yield\ Region.1                 =塑性域
+variable.Crack\ Surface                  =クラック表面
+variable.Crack\ Surface.0                =通常粒子
+variable.Crack\ Surface.1                =亀裂表面
+variable.ParticleID                      =粒子番号
+variable.MaterialID                      =材料番号
+variable.VolumeID                        =ボリューム番号
+variable.RegionID                        =領域番号
+variable.NPOUT                           =結果出力の可否
+variable.OutputFlag                      =結果出力の可否
+variable.ISURF                           =表層番号
+variable.Insurf                          =表層番号
+variable.ISURF.0                         =その他粒子
+variable.Insurf.0                        =その他粒子
+variable.ISURF.1                         =表層粒子
+variable.Insurf.1                        =表層粒子
+variable.ISURF.2                         =第2層粒子
+variable.Insurf.2                        =第2層粒子
+variable.ISURF.3                         =第3層粒子
+variable.Insurf.3                        =第3層粒子
+variable.CRACK                           =亀裂
+variable.CRACK.-1                        =通常粒子
+
+##################################################
+# その他
+##################################################
+Step\ Number  =ステップ番号
+Modulus       =変形表示の倍率
+

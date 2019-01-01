@@ -1,0 +1,39 @@
+#####################################################
+# Copyright (C) 2014 ADVENTURE Project
+# All Rights Reserved
+#####################################################
+ 
+-----------------------------------------------------
+ADVENTURE_Mates
+-----------------------------------------------------
+ADVENTURE_Mates is a multiagent-based traffic and environment
+simulator. The software has been developing by ADVENTURE project.
+
+-----------------------------------------------------
+DOCUMENTATION
+-----------------------------------------------------
+The necessary information about program operation can be found
+in the manual file in "doc" directory.
+
+The manual will be installed into <install_dir>/doc/AdvMates
+by "make install", see below.
+
+-----------------------------------------------------
+INSTALLATION
+-----------------------------------------------------
+The following commands should be executed, after extraction of 
+the package tar file and moving to a top directory 
+"AdvMates-<Version name>". 
+
+  % cmake .
+  % make
+  % make install
+
+The default install directory is $HOME/ADVENTURE. It can be changed
+at the cmake command with the option  -DINSTALL_PREFIX=<install_dir>. 
+
+For example, 
+
+  % cmake -DINSTALL_PREFIX=/usr/local .
+
+will install files into /usr/local at "make install".

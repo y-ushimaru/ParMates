@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ===============================================
+  Copyright (C) 2014 ADVENTURE Project
+  All Rights Reserved
+================================================ -->
+<ui version="4.0">
+    <class>RoadDialog</class>
+    <widget class="QDialog" name="RoadDialog">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>569</width>
+                <height>310</height>
+            </rect>
+        </property>
+        <property name="minimumSize">
+            <size>
+                <width>569</width>
+                <height>310</height>
+            </size>
+        </property>
+        <property name="maximumSize">
+            <size>
+                <width>569</width>
+                <height>310</height>
+            </size>
+        </property>
+        <property name="font">
+            <font>
+                <family>Sans Serif</family>
+            </font>
+        </property>
+        <property name="windowTitle">
+            <string>Section edit</string>
+        </property>
+        <widget class="QLabel" name="labelIntsecId1">
+            <property name="geometry">
+                <rect>
+                    <x>170</x>
+                    <y>60</y>
+                    <width>91</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="frameShape">
+                <enum>QFrame::Panel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+                <string>0</string>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="buttonDelete">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>220</y>
+                    <width>251</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                </font>
+            </property>
+            <property name="text">
+                <string>Delete section only</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBoxOut1">
+            <property name="geometry">
+                <rect>
+                    <x>250</x>
+                    <y>90</y>
+                    <width>51</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="maximum">
+                <number>9</number>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label">
+            <property name="geometry">
+                <rect>
+                    <x>50</x>
+                    <y>90</y>
+                    <width>191</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Outflow lanes from section:</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="buttonCancel">
+            <property name="geometry">
+                <rect>
+                    <x>445</x>
+                    <y>220</y>
+                    <width>101</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Cancel</string>
+            </property>
+            <property name="default">
+                <bool>false</bool>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_4">
+            <property name="geometry">
+                <rect>
+                    <x>50</x>
+                    <y>60</y>
+                    <width>111</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Intersection ID:</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="buttonOk">
+            <property name="geometry">
+                <rect>
+                    <x>445</x>
+                    <y>260</y>
+                    <width>101</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>OK</string>
+            </property>
+            <property name="default">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QLabel" name="labelIntsecIcon1">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>60</y>
+                    <width>16</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string/>
+            </property>
+            <property name="pixmap">
+                <pixmap resource="map_editor.qrc">:/icon/intsec_normal.png</pixmap>
+            </property>
+        </widget>
+        <widget class="QLabel" name="labelIntsecId2">
+            <property name="geometry">
+                <rect>
+                    <x>170</x>
+                    <y>140</y>
+                    <width>91</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="frameShape">
+                <enum>QFrame::Panel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+                <string>0</string>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" name="labelIntsecIcon2">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>140</y>
+                    <width>16</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string/>
+            </property>
+            <property name="pixmap">
+                <pixmap resource="map_editor.qrc">:/icon/intsec_normal.png</pixmap>
+            </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBoxIn1">
+            <property name="geometry">
+                <rect>
+                    <x>495</x>
+                    <y>90</y>
+                    <width>51</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="maximum">
+                <number>9</number>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_3">
+            <property name="geometry">
+                <rect>
+                    <x>310</x>
+                    <y>90</y>
+                    <width>171</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Inflow lanes to section:</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBoxOut2">
+            <property name="geometry">
+                <rect>
+                    <x>250</x>
+                    <y>170</y>
+                    <width>51</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="maximum">
+                <number>9</number>
+            </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBoxIn2">
+            <property name="geometry">
+                <rect>
+                    <x>495</x>
+                    <y>170</y>
+                    <width>51</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="maximum">
+                <number>9</number>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_5">
+            <property name="geometry">
+                <rect>
+                    <x>310</x>
+                    <y>60</y>
+                    <width>71</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Position:</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="labelIntsecPos1">
+            <property name="geometry">
+                <rect>
+                    <x>385</x>
+                    <y>60</y>
+                    <width>161</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="frameShape">
+                <enum>QFrame::Panel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+                <string>(0, 0)</string>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_6">
+            <property name="geometry">
+                <rect>
+                    <x>50</x>
+                    <y>140</y>
+                    <width>111</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Intersection ID:</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_7">
+            <property name="geometry">
+                <rect>
+                    <x>310</x>
+                    <y>140</y>
+                    <width>71</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Position:</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="labelIntsecPos2">
+            <property name="geometry">
+                <rect>
+                    <x>385</x>
+                    <y>140</y>
+                    <width>161</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="frameShape">
+                <enum>QFrame::Panel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+                <string>(0, 0)</string>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_2">
+            <property name="geometry">
+                <rect>
+                    <x>50</x>
+                    <y>170</y>
+                    <width>191</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Outflow lanes from section:</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_8">
+            <property name="geometry">
+                <rect>
+                    <x>310</x>
+                    <y>170</y>
+                    <width>171</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Inflow lanes to section:</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="buttonVerify">
+            <property name="geometry">
+                <rect>
+                    <x>445</x>
+                    <y>15</y>
+                    <width>101</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Sans Serif</family>
+                </font>
+            </property>
+            <property name="text">
+                <string>Confirm</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton" name="radioLane2">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>20</y>
+                    <width>141</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>1 lane each way</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton" name="radioLane4">
+            <property name="geometry">
+                <rect>
+                    <x>180</x>
+                    <y>20</y>
+                    <width>143</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>2 lanes each way</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton" name="radioLaneOther">
+            <property name="geometry">
+                <rect>
+                    <x>332</x>
+                    <y>20</y>
+                    <width>91</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Other</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_9">
+            <property name="geometry">
+                <rect>
+                    <x>290</x>
+                    <y>110</y>
+                    <width>31</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string/>
+            </property>
+            <property name="pixmap">
+                <pixmap resource="map_editor.qrc">:/icon/road_dir.png</pixmap>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="buttonDelIntsec">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>260</y>
+                    <width>251</width>
+                    <height>31</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Delete section with intersections</string>
+            </property>
+        </widget>
+    </widget>
+    <tabstops>
+        <tabstop>buttonCancel</tabstop>
+        <tabstop>radioLane2</tabstop>
+        <tabstop>radioLane4</tabstop>
+        <tabstop>radioLaneOther</tabstop>
+        <tabstop>spinBoxOut1</tabstop>
+        <tabstop>spinBoxIn1</tabstop>
+        <tabstop>spinBoxOut2</tabstop>
+        <tabstop>spinBoxIn2</tabstop>
+        <tabstop>buttonDelete</tabstop>
+        <tabstop>buttonDelIntsec</tabstop>
+        <tabstop>buttonVerify</tabstop>
+        <tabstop>buttonOk</tabstop>
+    </tabstops>
+    <resources>
+        <include location="map_editor.qrc"/>
+    </resources>
+    <connections/>
+</ui>

@@ -1,0 +1,14 @@
+nShapes=6
+Shape.0.file  =signal/signalSimpleGreen.pch
+Shape.0.color =0.0, 0.2, 0.2
+Shape.1.file  =signal/signalSimpleYellow.pch
+Shape.1.color =0.2, 0.2, 0.0
+Shape.2.file  =signal/signalSimpleRed.pch
+Shape.2.color =0.2, 0.0, 0.0
+Shape.3.file  =signal/signalSimpleLeft.pch
+Shape.3.color =0.0, 0.0, 0.2
+Shape.4.file  =signal/signalSimpleStraight.pch
+Shape.4.color =0.0, 0.2, 0.0
+Shape.5.file  =signal/signalSimpleRight.pch
+Shape.5.color =0.2, 0.1, 0.0
+

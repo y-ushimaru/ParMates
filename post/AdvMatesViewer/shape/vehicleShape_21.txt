@@ -1,0 +1,25 @@
+nShapes=8
+
+Shape.0.file  =passenger/passengerBody.pch
+Shape.0.color =Color.BODY
+
+Shape.1.file  =passenger/passengerGlass.pch
+Shape.1.color =Color.GLASS
+
+Shape.2.file  =passenger/passengerTire.pch
+Shape.2.color =Color.TIRE
+
+Shape.3.file  =passenger/passengerWheel.pch
+Shape.3.color =Color.WHEEL
+
+Shape.4.file  =passenger/passengerBumper.pch
+Shape.4.color =0.1, 0.1, 0.1
+
+Shape.5.file  =passenger/passengerLight.pch
+Shape.5.color =1.0, 1.0, 0.8
+
+Shape.6.file  =passenger/passengerLine.pch
+Shape.6.color =0.4, 0.4, 0.4
+
+Shape.7.file  =passenger/passengerNumberPlate.pch
+Shape.7.color =1.0, 1.0, 1.0

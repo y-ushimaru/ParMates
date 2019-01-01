@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/y_ushimaru/ParMates/lib/XSadd/xsadd.c
+xsadd.h
+-
+stdlib.h
+-
+stdio.h
+-
+inttypes.h
+-
+errno.h
+-
+string.h
+-
+
+lib/XSadd/./xsadd.h
+stdint.h
+-
+inttypes.h
+-
+

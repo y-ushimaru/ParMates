@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<project name="AdvMatesViewer" default="compile" basedir=".">
+  
+  <property name="DIR_SOURCE"    value="src" />
+  <property name="DIR_CLASS"     value="classes" />
+  <property name="DIR_DOC"       value="doc" />
+  <property name="DIR_JAR"       value="jar" />
+  <property name="DIR_JAVADOC"   value="javadocs" />
+  <property name="DIR_DOXYGEN"   value="doxygen" />
+  <property name="DIR_LIB"       value="lib" />
+  <property name="DIR_RELEASE"   value="release" />
+  <property name="DIR_SAMPLES"   value="sample" />
+  <property name="DIR_PRODUCT"   value="AdvMatesViewer" />
+  <property name="JAR_NAME"      value="AdvMatesViewer" />
+  <property name="PACKAGE_PATH"  value="jp/ac/u_tokyo/t/q/adventure/mates" />
+  <property name="MAIN_CLASS"    value="jp.ac.u_tokyo.t.q.adventure.mates.AdvMatesViewerMain" />
+  
+  <property file="build.properties" />
+  
+  <!-- ********************************************************************************-->
+  <fileset id="JAR_LIBRARIES" dir="${DIR_LIB}">
+    <include name="ant.jar" />
+    <include name="miglayout-4.0.jar" />
+  </fileset>
+  
+  <!-- ********************************************************************************-->
+  <fileset id="JAR_JOGL" dir="${DIR_JOGL_LIB}">
+    <include name="jogl.jar" />
+    <include name="gluegen-rt.jar" />
+  </fileset>
+  
+  <!-- ********************************************************************************-->
+  <path id="base.classpath">
+    <pathelement path="${DIR_CLASS}" />
+    <fileset refid="JAR_LIBRARIES" />
+    <fileset refid="JAR_JOGL" />
+  </path>
+  
+  <!-- ********************************************************************************-->
+  <fileset id="SAMPLES" dir="${DIR_SAMPLES}">
+    <include name="Data7_changeHeight.tar.gz" />
+    <include name="sample.zip" />
+    <include name="sample_short.zip" />
+  </fileset>
+  
+  <!-- ********************************************************************************-->
+  <target name="clean">
+    <delete quiet="true" >
+      <fileset dir="${DIR_CLASS}" casesensitive="yes">
+        <patternset id="CLASS_FILES">
+          <include name="**/*.class" />
+        </patternset>
+      </fileset>
+    </delete>
+    
+    <delete dir="${DIR_CLASS}" />
+    <delete dir="${DIR_JAVADOC}" />
+    <delete dir="${DIR_JAR}" />
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="prepare">
+    <tstamp />
+    <mkdir dir="${DIR_CLASS}/${PACKAGE_PATH}/resource" />
+    <mkdir dir="${DIR_CLASS}/${PACKAGE_PATH}/image" />
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="resource">
+    <propertyfile file="${DIR_CLASS}/${PACKAGE_PATH}/resource/buildNumber_ja.properties">
+      <entry  key="Product.buildNumber" type="date" value="now" pattern="yyyyMMdd" />
+    </propertyfile>
+    <propertyfile file="${DIR_CLASS}/${PACKAGE_PATH}/resource/buildNumber_en.properties">
+      <entry  key="Product.buildNumber" type="date" value="now" pattern="yyyyMMdd" />
+    </propertyfile>
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="native2ascii">
+    <native2ascii
+      src="${DIR_SOURCE}/${PACKAGE_PATH}/resource"
+      dest="${DIR_SOURCE}/${PACKAGE_PATH}/resource"
+      includes="*.sjis"
+      encoding="Windows-31J"
+      ext=".properties">
+    </native2ascii>
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="copy">
+    <copy todir="${DIR_CLASS}/${PACKAGE_PATH}/resource">
+      <fileset dir="${DIR_SOURCE}/${PACKAGE_PATH}/resource">
+        <include name="*.properties" />
+      </fileset>
+    </copy>
+    <copy   file="${DIR_CLASS}/${PACKAGE_PATH}/resource/resource_ja.properties"
+          tofile="${DIR_CLASS}/${PACKAGE_PATH}/resource/resource_en.properties" />
+    <copy todir="${DIR_CLASS}/${PACKAGE_PATH}/image">
+      <fileset dir="${DIR_SOURCE}/${PACKAGE_PATH}/image">
+        <include name="*.gif" />
+        <include name="*.jpg" />
+        <include name="*.png" />
+      </fileset>
+    </copy>
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="compile" depends="prepare, resource, native2ascii, copy">
+    <javac
+      deprecation="yes"
+      srcdir="${DIR_SOURCE}"
+      destdir="${DIR_CLASS}"
+      encoding="Windows-31J"
+      debug="true"
+      classpathref="base.classpath"
+      sourcepath="${DIR_SOURCE}">
+      <compilerarg value="-Xlint:unchecked" />
+    </javac>
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="run" depends="compile">
+    <java classname="${MAIN_CLASS}" fork="true">
+      <classpath refid="base.classpath" />
+      <jvmarg value="-Xmx${MAX_HEAP_IN_MB}M" />
+      <jvmarg value="-Djava.library.path=${DIR_JOGL_BIN}" />
+    </java>
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="runProfile" depends="compile">
+    <java classname="${MAIN_CLASS}" fork="true">
+      <classpath refid="base.classpath" />
+      <jvmarg value="-Xmx${MAX_HEAP_IN_MB}M" />
+      <jvmarg value="-Djava.library.path=${DIR_JOGL_BIN}" />
+      <jvmarg value="-agentlib:hprof=cpu=times,heap=all,file=profile.txt"/>
+    </java>
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="jar" depends="clean, compile">
+    <mkdir dir="${DIR_JAR}" />
+    <jar jarfile="${DIR_JAR}/${JAR_NAME}-${DSTAMP}.jar" basedir="${DIR_CLASS}">
+    </jar>
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="release" depends="jar">
+    
+    <property name="DIR_RELEASE_32" value="${DIR_RELEASE}/${DIR_RELEASE}_${DSTAMP}/32bit/${DIR_PRODUCT}" />
+    <property name="DIR_RELEASE_64" value="${DIR_RELEASE}/${DIR_RELEASE}_${DSTAMP}/64bit/${DIR_PRODUCT}" />
+    
+    <mkdir dir="${DIR_RELEASE_32}" />
+    <mkdir dir="${DIR_RELEASE_64}" />
+    
+    <copy preservelastmodified="true" file="${DIR_DOC}/manual.pdf" tofile="${DIR_RELEASE_32}/${DIR_DOC}/manual.pdf" />
+    <copy preservelastmodified="true" file="${DIR_DOC}/manual.odt" tofile="${DIR_RELEASE_32}/${DIR_DOC}/manual.odt" />
+    <copy preservelastmodified="true" file="${DIR_DOC}/manual.pdf" tofile="${DIR_RELEASE_64}/${DIR_DOC}/manual.pdf" />
+    <copy preservelastmodified="true" file="${DIR_DOC}/manual.odt" tofile="${DIR_RELEASE_64}/${DIR_DOC}/manual.odt" />
+    
+    <copy preservelastmodified="true" file="${DIR_JAR}/${JAR_NAME}-${DSTAMP}.jar" tofile="${DIR_RELEASE_32}/${JAR_NAME}.jar" />
+    <copy preservelastmodified="true" file="${DIR_JAR}/${JAR_NAME}-${DSTAMP}.jar" tofile="${DIR_RELEASE_64}/${JAR_NAME}.jar" />
+    
+    <copy preservelastmodified="true" file="${DIR_DOC}/${SCRIPT_BOOT_32}" tofile="${DIR_RELEASE_32}/${SCRIPT_BOOT}" />
+    <copy preservelastmodified="true" file="${DIR_DOC}/${SCRIPT_BOOT_64}" tofile="${DIR_RELEASE_64}/${SCRIPT_BOOT}" />
+    
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_32}/${DIR_SAMPLES}">
+      <fileset refid="SAMPLES" />
+    </copy>
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_64}/${DIR_SAMPLES}">
+      <fileset refid="SAMPLES" />
+    </copy>
+    
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_32}">
+      <fileset dir="${DIR_JRE_32bit}" />
+    </copy>
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_64}">
+      <fileset dir="${DIR_JRE_64bit}" />
+    </copy>
+    
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_32}/${DIR_LIB}">
+      <fileset refid="JAR_LIBRARIES" />
+    </copy>
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_64}/${DIR_LIB}">
+      <fileset refid="JAR_LIBRARIES" />
+    </copy>
+    
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_32}/${DIR_JOGL_LIB}">
+      <fileset refid="JAR_JOGL" />
+    </copy>
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_64}/${DIR_JOGL_LIB}">
+      <fileset refid="JAR_JOGL" />
+    </copy>
+    
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_32}/${DIR_JOGL_BIN_32}">
+      <fileset dir="${DIR_JOGL_BIN_32}">
+        <include name="gluegen-rt.dll" />
+        <include name="jogl.dll" />
+        <include name="jogl_awt.dll" />
+        <include name="jogl_cg.dll" />
+        <include name="libgluegen-rt.so" />
+        <include name="libjogl.so" />
+        <include name="libjogl_awt.so" />
+        <include name="libjogl_cg.so" />
+      </fileset>
+    </copy>
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_64}/${DIR_JOGL_BIN_64}">
+      <fileset dir="${DIR_JOGL_BIN_64}">
+        <include name="gluegen-rt.dll" />
+        <include name="jogl.dll" />
+        <include name="jogl_awt.dll" />
+        <include name="jogl_cg.dll" />
+        <include name="libgluegen-rt.so" />
+        <include name="libjogl.so" />
+        <include name="libjogl_awt.so" />
+        <include name="libjogl_cg.so" />
+      </fileset>
+    </copy>
+    
+    <copy preservelastmodified="true" file="build.xml" todir="${DIR_RELEASE_32}" />
+    <copy preservelastmodified="true" file="build.xml" todir="${DIR_RELEASE_64}" />
+    <copy preservelastmodified="true" file="build.properties.template" todir="${DIR_RELEASE_32}" />
+    <copy preservelastmodified="true" file="build.properties.template" todir="${DIR_RELEASE_64}" />
+    
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_32}/${DIR_SOURCE}">
+      <fileset dir="${DIR_SOURCE}">
+        <include name="**/*.java" />
+        <include name="**/*.sjis" />
+        <include name="**/*.png" />
+      </fileset>
+    </copy>
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_64}/${DIR_SOURCE}">
+      <fileset dir="${DIR_SOURCE}">
+        <include name="**/*.java" />
+        <include name="**/*.sjis" />
+        <include name="**/*.png" />
+      </fileset>
+    </copy>
+    
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_32}/${DIR_SHAPE_TO}">
+      <fileset dir="${DIR_SHAPE_FROM}">
+        <include name="**/*.txt" />
+        <include name="**/*.pch" />
+      </fileset>
+    </copy>
+    <copy preservelastmodified="true" todir="${DIR_RELEASE_64}/${DIR_SHAPE_TO}">
+      <fileset dir="${DIR_SHAPE_FROM}">
+        <include name="**/*.txt" />
+        <include name="**/*.pch" />
+      </fileset>
+    </copy>
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="javadoc">
+    <javadoc destdir="${DIR_JAVADOC}">
+      <classpath refid="base.classpath" />
+      <fileset dir="${DIR_SOURCE}" />
+    </javadoc>
+  </target>
+  
+  <!-- ********************************************************************************-->
+  <target name="doxygen">
+    <taskdef name="doxygen"
+             classname="org.doxygen.tools.DoxygenTask"
+             classpath="ant_doxygen.jar" />
+    <doxygen>
+      <property name="PROJECT_NAME" value="Ant-Doxygen" />
+      <property name="OUTPUT_DIRECTORY" value="${DIR_DOXYGEN}" />
+      <property name="INPUT" value="${DIR_SOURCE}" />
+      <property name="GENERATE_LATEX" value="YES" />
+    </doxygen>
+  </target>
+</project>

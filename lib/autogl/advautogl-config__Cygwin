@@ -1,0 +1,18 @@
+#! /bin/sh -f
+########################################################################### 
+# Copyright (C) 2002-2014 Shinobu Yoshimura, University of Tokyo,         #
+# the Japan Society for the Promotion of Science (JSPS)                   #
+# All Rights Reserved                                                     #
+########################################################################### 
+
+# Cygwin
+#   WIN32 and OpenGL (on Microsoft Windows, using Cygwin)
+#     using WIN32 as GUI library
+#     using OpenGL as graphics library
+
+opengl_libs="-lglu32 -lopengl32"
+windows_libs=" -luser32 -lgdi32"
+
+libs="${opengl_libs} ${windows_libs}"
+
+echo "${libs} "

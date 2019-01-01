@@ -1,0 +1,28 @@
+nShapes=9
+
+Shape.0.file   =truck/truckBody.pch
+Shape.0.color  =Color.BODY
+
+Shape.1.file   =truck/truckGlass.pch
+Shape.1.color  =Color.GLASS
+
+Shape.2.file   =truck/truckTire.pch
+Shape.2.color  =Color.TIRE
+
+Shape.3.file   =truck/truckWheel.pch
+Shape.3.color  =Color.WHEEL
+
+Shape.4.file   =truck/truckBumper.pch
+Shape.4.color  =0.1, 0.1, 0.1
+
+Shape.5.file   =truck/truckContainer.pch
+Shape.5.color  =0.7, 0.4, 0.0
+
+Shape.6.file   =truck/truckLight.pch
+Shape.6.color  =1.0, 1.0, 0.8
+
+Shape.7.file   =truck/truckLine.pch
+Shape.7.color  =0.4, 0.4, 0.4
+
+Shape.8.file   =truck/truckNumberPlate.pch
+Shape.8.color  =1.0, 1.0, 1.0

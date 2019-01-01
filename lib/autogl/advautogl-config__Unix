@@ -1,0 +1,20 @@
+#! /bin/sh -f
+########################################################################### 
+# Copyright (C) 2002-2014 Shinobu Yoshimura, University of Tokyo,         #
+# the Japan Society for the Promotion of Science (JSPS)                   #
+# All Rights Reserved                                                     #
+########################################################################### 
+
+# Unix
+#   Motif and OpenGL (on Unix)
+#     using Motif as GUI library
+#     using OpenGL as graphics library
+#     using GLw as glue between Motif and OpenGL
+
+glw_libs="-lGLw"
+opengl_libs="-lGLU -lGL"
+motif_libs="-lXm -lXt -lXmu -lXext -lSM -lICE -lX11 -lm"
+
+libs="${glw_libs} ${opengl_libs} ${motif_libs}"
+
+echo "${libs} "

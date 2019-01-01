@@ -1,0 +1,22 @@
+#! /bin/sh -f
+########################################################################### 
+# Copyright (C) 2002-2014 Shinobu Yoshimura, University of Tokyo,         #
+# the Japan Society for the Promotion of Science (JSPS)                   #
+# All Rights Reserved                                                     #
+########################################################################### 
+
+# Linux_old
+#   Gtk+, OpenGL and gtkglare (on Linux)
+#     using Gtk+ as GUI library
+#       Gtk+ should be Ver. 1.2.*
+#     using OpenGL as graphics library
+#     using gtkglarea as glue between Gtk+ and OpenGL
+#       gtkglarea should be Ver. 1.2.*
+
+gtkglarea_libs="-lgtkgl"
+opengl_libs="-lGLU -lGL"
+gtk_libs=`gtk-config --libs`
+
+libs="${gtkglarea_libs} ${opengl_libs} ${gtk_libs}"
+
+echo "${libs} "

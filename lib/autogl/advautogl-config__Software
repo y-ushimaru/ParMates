@@ -1,0 +1,15 @@
+#! /bin/sh -f
+########################################################################### 
+# Copyright (C) 2002-2014 Shinobu Yoshimura, University of Tokyo,         #
+# the Japan Society for the Promotion of Science (JSPS)                   #
+# All Rights Reserved                                                     #
+########################################################################### 
+
+# Software
+#   software emulation, off-line rendering
+#     AutoGL OS-X (Off-Screen eXtension)
+#     No libraries are required.
+
+libs="-lm"
+
+echo "${libs} "

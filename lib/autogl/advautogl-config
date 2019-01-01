@@ -1,0 +1,20 @@
+#! /bin/sh -f
+########################################################################### 
+# Copyright (C) 2002-2014 Shinobu Yoshimura, University of Tokyo,         #
+# the Japan Society for the Promotion of Science (JSPS)                   #
+# All Rights Reserved                                                     #
+########################################################################### 
+
+# Linux
+#   Gtk+, OpenGL and GLX (on Linux)
+#     using Gtk+ as GUI library
+#       Gtk+ should be Ver. 2.*
+#     using OpenGL as graphics library
+#     using GLX as glue between Gtk+ and OpenGL
+
+opengl_libs="-lGLU -lGL"
+gtk_libs=`pkg-config --libs gtk+-2.0`
+
+libs="${opengl_libs} ${gtk_libs} -lX11 -lm"
+
+echo "${libs} "
